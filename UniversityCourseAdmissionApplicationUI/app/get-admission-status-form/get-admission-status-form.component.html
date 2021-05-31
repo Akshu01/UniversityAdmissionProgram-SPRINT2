@@ -1,0 +1,50 @@
+<div class="container-fluid mb-5">
+    <h1 style="text-align: center;"><strong>Get Admission Detail</strong></h1>
+    <div class="container">
+        <form #getAdmissionForm="ngForm" (ngSubmit)="getAdmission(getAdmissionForm)">
+            <div class="form-group">
+                <label class="form-group'level">
+                    <h4><strong>Admission Id</strong></h4>
+                </label>
+                <input type="text" required #admissionId="ngModel" pattern="^\d+$" name="admissionId"
+                    class="form-control" ngModel>
+            </div>
+
+            <div class="alert alert-danger" *ngIf="admissionId.errors && (admissionId.dirty || admissionId.touched)">
+                <div *ngif="admissionId.errors.required">
+                    Admission Id is required
+                </div>
+
+                <div *ngIf="admissionId.errors.pattern">
+                    Admission Id should be numeric
+                </div>
+            </div>
+
+            <button [disabled]="getAdmissionForm.form.invalid" class="btn btn-primary mt-2" type="submit">Find</button>
+        </form>
+        <h3 class="mt-2" *ngIf="errorShow"><strong>{{ message }}</strong></h3>
+    </div>
+
+
+    <div class="container" *ngIf="check">
+        <h2 style="text-align: center;"><strong>Admission Detail</strong></h2>
+        <table class="table">
+            <tr>
+                <th>Admission Id</th>
+                <td>{{admission.admissionId}}</td>
+            </tr>
+            <tr>
+                <th>Admission Date</th>
+                <td>{{admission.admissionDate}}</td>
+            </tr>
+            <tr>
+                <th>Admission Status</th>
+                <td>{{admission.admissionStatus}}</td>
+            </tr>
+            <tr>
+                <th>Applicant Id</th>
+                <td>{{admission.applicantId}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<h3>Admissions List</h3>
+<table class="table table-bordered table-hover" *ngIf="admission">
+    <thead>
+        <tr>
+            <th>Admission ID</th>
+            <th>Admission Date </th>
+            <th>Admission Status</th>
+            <th>Course Id</th>
+            <th>Applicant Id</th>
+            <th>Admin Id</th>
+            <th colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of admission">
+            <td>{{ e.admissionId }} </td>
+            <td>{{ e.admissionDate }} </td>
+            <td>{{ e.admissionStatus }}</td>
+            <td>{{ e.courseId }} </td>
+            <td>{{ e.applicantId }}</td>
+            <td>{{ e.adminId }}</td>
+            <td><button class="btn btn-sm btn-danger" (click)="delete(e.admissionId)">Delete Admission</button></td>
+            <td><a class="btn btn-sm btn-info" routerLink="/header/admissions/edit/{{e.admissionId}}">Edit Admission
+                    Details</a></td>
+        </tr>
+    </tbody>
+</table>

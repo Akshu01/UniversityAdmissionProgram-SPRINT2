@@ -1,0 +1,63 @@
+<body>
+    <div class="col-sm-6 p-3">
+
+        <h2 class="mt-4 text-light">{{ isEditing ? "Edit" : "New"}} Applicant</h2>
+
+        <form class="form" [formGroup]="applicantForm" (ngSubmit)="handleSubmit()">
+
+            <div class="form-group mt-4 text-light bg-dark">
+
+                <label class="form-control-label">Applicant Intermediate Roll Number :</label>
+                <input type="number" formControlName="applicantId" class="form-control"
+                    placeholder="Enter Your Roll Number" />
+                <div class="alert alert-danger"
+                    *ngIf="applicantIdfc.invalid && (applicantIdfc.touched || applicantIdfc.dirty)">
+                    <span *ngIf="applicantIdfc.errors.required">This field is mandatory</span>
+                    <span *ngIf="applicantIdfc.errors.pattern">Enter valid roll number</span>
+                </div>
+            </div>
+            <div class="form-group mt-4 text-light bg-dark">
+                <label class="form-control-label">Applicant Name :</label>
+                <input type="text" formControlName="applicantName" class="form-control" placeholder="Enter Name" />
+                <div class="alert alert-danger"
+                    *ngIf="applicantNamefc.invalid && (applicantNamefc.touched || applicantNamefc.dirty)">
+                    <span *ngIf="applicantNamefc.errors.required">This field is mandatory</span>
+                    <span *ngIf="applicantNamefc.errors.maxLength">Maximum 20 characters allowed</span>
+                </div>
+            </div>
+            <div class="form-group mt-4 text-light bg-dark">
+                <label class="form-control-label">MobileNumber :</label>
+                <input type="text" formControlName="mobileNumber" class="form-control" placeholder="Enter Mobile Number"
+                    pattern="^((\\+91-?)|0)?[0-9]{10}$" />
+                <div class="alert alert-danger"
+                    *ngIf="mobileNumberfc.invalid && (mobileNumberfc.touched || mobileNumberfc.dirty)">
+                    <span *ngIf="mobileNumberfc.errors.required">This field is mandatory</span>
+                    <span *ngIf="mobileNumberfc.errors.pattern">Please enter 10 digits mobile number</span>
+                </div>
+            </div>
+            <div class="form-group mt-4 text-light bg-dark">
+                <label class="form-control-label">Course :</label>
+                <select type="text" formControlName="applicantDegree" class="form-control">
+                    <option [ngValue]="null" [disabled]="true">Please choose a course you want to apply for</option>
+                    <option *ngFor="let c of course" [value]="c.courseId">{{ c.courseName }}</option>
+                </select>
+                <div class="alert alert-danger"
+                    *ngIf="applicantDegreefc.invalid && (applicantDegreefc.touched || applicantDegreefc.dirty)">
+                    <span *ngIf="applicantDegreefc.errors.required">This field is mandatory</span>
+                </div>
+            </div>
+            <div class="form-group mt-4 text-light bg-dark">
+                <label class="form-control-label">Applicant Intermediate Percent :</label>
+                <input type="text" formControlName="applicantGradPercent" class="form-control"
+                    placeholder="Enter Your Intermediate Cumulative Percentage" />
+                <div class="alert alert-danger"
+                    *ngIf="applicantGradPercentfc.invalid && (applicantGradPercentfc.touched || applicantGradPercentfc.dirty)">
+                    <span *ngIf="applicantGradPercentfc.errors.required">This field is mandatory</span>
+                </div>
+            </div>
+            <button class="btn btn-block btn-primary mt-3" [disabled]="applicantForm.invalid">
+                Apply
+            </button>
+        </form>
+    </div>
+</body>

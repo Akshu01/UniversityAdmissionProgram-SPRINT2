@@ -1,0 +1,57 @@
+<div class="col-sm-6 mx-auto">
+
+    <h3 class="mt-3">{{ isEditing ? "Edit" : "New"}} Applicants</h3>
+
+    <form class="form" [formGroup]="applicantForm" (ngSubmit)="handleSubmit()">
+        <div class="form-group">
+            <label class="form-control-label">Applicant Id :</label>
+            <input type="number" formControlName="applicantId" class="form-control" />
+            <div class="alert alert-danger"
+                *ngIf="applicantIdfc.invalid && (applicantIdfc.touched || applicantIdfc.dirty)">
+                <span *ngIf="applicantIdfc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Applicant Name :</label>
+            <input type="text" formControlName="applicantName" class="form-control" />
+            <div class="alert alert-danger"
+                *ngIf="applicantNamefc.invalid && (applicantNamefc.touched || applicantNamefc.dirty)">
+                <span *ngIf="applicantNamefc.errors.required">This field is mandate</span>
+                <span *ngIf="applicantNamefc.errors.maxLength">Maximum 20 characters allowed</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">MobileNumber :</label>
+            <input type="number" formControlName="mobileNumber" class="form-control"
+                pattern="^((\\+91-?)|0)?[0-9]{10}$" />
+            <div class="alert alert-danger"
+                *ngIf="mobileNumberfc.invalid && (mobileNumberfc.touched || mobileNumberfc.dirty)">
+                <span *ngIf="mobileNumberfc.errors.required">This field is mandate</span>
+                <span *ngIf="mobileNumberfc.errors.pattern">Please enter 10 digits mobile number</span>
+            </div>
+        </div>
+        <div class="form-group mt-2 text-dark">
+            <label class="form-control-label">Course :</label>
+            <select type="text" formControlName="applicantDegree" class="form-control">
+                <option [ngValue]="null" [disabled]="true">Please choose a course you want to apply for</option>
+                <option *ngFor="let c of course" [value]="c.courseName">{{ c.courseName }}</option>
+            </select>
+            <div class="alert alert-danger"
+                *ngIf="applicantDegreefc.invalid && (applicantDegreefc.touched || applicantDegreefc.dirty)">
+                <span *ngIf="applicantDegreefc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+        <div class="form-group mt-2">
+            <label class="form-control-label">Applicant Intermediate Percent :</label>
+            <input type="text" formControlName="applicantGradPercent" class="form-control" />
+            <div class="alert alert-danger"
+                *ngIf="applicantGradPercentfc.invalid && (applicantGradPercentfc.touched || applicantGradPercentfc.dirty)">
+                <span *ngIf="applicantGradPercentfc.errors.required">This field is mandate</span>
+
+            </div>
+        </div>
+        <button class="btn btn-block btn-primary mt-2" [disabled]="applicantForm.invalid">
+            Save
+        </button>
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<div class="col-sm-6 mx-auto">
+
+    <h3>{{ isEditing ? "Edit" : "New"}} University Staff</h3>
+
+    <form class="form" [formGroup]="staffForm" (ngSubmit)="handleSubmit()">
+        <div class="form-group">
+            <label class="form-control-label">Staff Id :</label>
+            <input type="number" formControlName="staffId" class="form-control" />
+            <div class="alert alert-danger" *ngIf="staffIdfc.invalid && (staffIdfc.touched || staffIdfc.dirty)">
+                <span *ngIf="staffIdfc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Passcode :</label>
+            <input type="password" formControlName="password" class="form-control" />
+            <div class="alert alert-danger" *ngIf="passwordfc.invalid && (passwordfc.touched || passwordfc.dirty)">
+                <span *ngIf="passwordfc.errors.required">This field is mandate</span>
+                <span *ngIf="passwordfc.errors.maxLength">Maximum 20 characters allowed</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Role :</label>
+            <input type="text" formControlName="role" class="form-control" />
+            <div class="alert alert-danger" *ngIf="rolefc.invalid && (rolefc.touched || rolefc.dirty)">
+                <span *ngIf="rolefc.errors.required">This field is mandate</span>
+                <span *ngIf="rolefc.errors.maxLength">Maximum 30 characters allowed</span>
+            </div>
+        </div>
+        <button class="btn btn-block btn-primary" [disabled]="staffForm.invalid">
+            Save
+        </button>
+    </form>
+</div>

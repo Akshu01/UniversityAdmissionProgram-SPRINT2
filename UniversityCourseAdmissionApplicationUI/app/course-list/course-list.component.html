@@ -1,0 +1,35 @@
+<h3>Course List</h3>
+<app-msgbox *ngIf="!err && !courses">
+    <strong>loading ... please wait ...</strong>
+</app-msgbox>
+<app-msgbox *ngIf="err" [isError]="true">
+    <strong>{{ err }}</strong>
+</app-msgbox>
+<table class="table table-bordered table-hover" *ngIf="courses">
+    <thead>
+        <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Course Duration</th>
+            <th>Course Start Date</th>
+            <th>Course End Date</th>
+            <th>Course Fess</th>
+            <th>Staff Id</th>
+            <th class = "text-center" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of courses">
+            <td>{{ e.courseId }} </td>
+            <td>{{ e.courseName }} </td>
+            <td>{{ e.courseDuration }} </td>
+            <td>{{ e.courseStartDate }} </td>
+            <td>{{ e.courseEndDate }} </td>
+            <td>{{ e.courseFees }} </td>
+            <td>{{ e.staff_id }} </td>
+            <td><button class="btn btn-sm btn-danger" (click)="delete(e.courseId)">Delete Course</button></td>
+            <td><a class="btn btn-sm btn-info" routerLink="/header/courses/edit/{{e.courseId}}">Edit Course Details</a></td>
+        </tr>
+    </tbody>
+</table>
+

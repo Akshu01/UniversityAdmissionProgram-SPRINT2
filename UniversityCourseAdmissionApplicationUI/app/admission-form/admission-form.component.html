@@ -1,0 +1,62 @@
+<div class="col-sm-6 mx-auto">
+
+    <h3>{{ isEditing ? "Edit" : "New"}} Admission</h3>
+
+    <form class="form" [formGroup]="admissionForm" (ngSubmit)="handleSubmit()">
+        <div class="form-group">
+            <label class="form-control-label">Admission Id :</label>
+            <input type="number" formControlName="admissionId" class="form-control" />
+            <div class="alert alert-danger"
+                *ngIf="admissionIdfc.invalid && (admissionIdfc.touched || admissionIdfc.dirty)">
+                <span *ngIf="admissionIdfc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Admission Date :</label>
+            <input type="date" formControlName="admissionDate" class="form-control" />
+            <div class="alert alert-danger"
+                *ngIf="admissionDatefc.invalid && (admissionDatefc.touched || admissionDatefc.dirty)">
+                <span *ngIf="admissionDatefc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Admission Status :</label>
+            <select type="text" formControlName="admissionStatus" class="form-control">
+                <option [ngValue]="null" [disabled]="true">Please Choose Applicant Status</option>
+                <option value="Applied">Applied</option>
+                <option value="Confirmed">Confirmed</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+            <div class="alert alert-danger"
+                *ngIf="admissionStatusfc.invalid && (admissionStatusfc.touched || admissionStatusfc.dirty)">
+                <span *ngIf="admissionStatusfc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Course Id :</label>
+            <input type="number" formControlName="courseId" class="form-control" />
+            <div class="alert alert-danger" *ngIf="courseIdfc.invalid && (courseIdfc.touched || courseIdfc.dirty)">
+                <span *ngIf="courseIdfc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Applicant Id :</label>
+            <input type="number" formControlName="applicantId" class="form-control" />
+            <div class="alert alert-danger"
+                *ngIf="applicantIdfc.invalid && (applicantIdfc.touched || applicantIdfc.dirty)">
+                <span *ngIf="applicantIdfc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Admin Id :</label>
+            <input type="number" formControlName="adminId" class="form-control" />
+            <div class="alert alert-danger" *ngIf="adminIdfc.invalid && (adminIdfc.touched || adminIdfc.dirty)">
+                <span *ngIf="adminIdfc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+
+        <button class="btn btn-block btn-primary" [disabled]="admissionForm.invalid">
+            Save
+        </button>
+    </form>
+</div>

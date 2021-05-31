@@ -1,0 +1,20 @@
+<h3>Admission Committee Member List</h3>
+<table class="table table-bordered table-hover" *ngIf="committee">
+    <thead>
+        <tr>
+            <th>Admin ID</th>
+            <th>Admin Name</th>
+            <th>Admin Contact</th>
+            <th colspan="2" class = "text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of committee">
+            <td>{{ e.adminId }} </td>
+            <td>{{ e.adminName }} </td>
+            <td>{{ e.adminContact }} </td>
+            <td><button class="btn btn-sm btn-danger" (click)="delete(e.adminId)">Delete Member</button></td>
+            <td><a class="btn btn-sm btn-info" routerLink="/header/admissioncommitteemember/edit/{{e.adminId}}">Edit Member</a></td>
+        </tr>
+    </tbody>
+</table>

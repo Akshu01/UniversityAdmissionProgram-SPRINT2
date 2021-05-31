@@ -1,0 +1,59 @@
+<div class="col-sm-6 mx-auto">
+
+    <h3>{{ isEditing ? "Edit" : "New"}} Applicant</h3>
+
+    <form class="form" [formGroup]="applicantForm" (ngSubmit)="handleSubmit()">
+        <div class="form-group">
+            <label class="form-control-label">Applicant Id :</label>
+            <input type="number" formControlName="applicantId" class="form-control" />
+            <div class="alert alert-danger"
+                *ngIf="applicantIdfc.invalid && (applicantIdfc.touched || applicantIdfc.dirty)">
+                <span *ngIf="applicantIdfc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Applicant Name :</label>
+            <input type="text" formControlName="applicantName" class="form-control" />
+            <div class="alert alert-danger"
+                *ngIf="applicantNamefc.invalid && (applicantNamefc.touched || applicantNamefc.dirty)">
+                <span *ngIf="applicantNamefc.errors.required">This field is mandate</span>
+                <span *ngIf="applicantNamefc.errors.maxLength">Maximum 20 characters allowed</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">MobileNumber :</label>
+            <input type="text" formControlName="mobileNumber" class="form-control" />
+            <div class="alert alert-danger"
+                *ngIf="mobileNumberfc.invalid && (mobileNumberfc.touched || mobileNumberfc.dirty)">
+                <span *ngIf="mobileNumberfc.errors.required">This field is mandate</span>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Applicant Degree :</label>
+            <select formControlName="applicantDegree" class="form-control" required>
+                <option [ngValue]="null" [disabled]="true">Select a Course</option>
+                <option value="B.Tech">B.Tech</option>
+                <option value="BBA">BBA</option>
+                <option value="B.Pharma">B.PHARMA</option>
+            </select>
+            <div class="alert alert-danger"
+                *ngIf="applicantDegreefc.invalid && (applicantDegreefc.touched || applicantDegreefc.dirty)">
+                <span *ngIf="applicantDegreefc.errors.required">This field is mandate</span>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Applicant Graduation Percent :</label>
+            <input type="text" formControlName="applicantGradPercent" class="form-control" />
+            <div class="alert alert-danger"
+                *ngIf="applicantGradPercentfc.invalid && (applicantGradPercentfc.touched || applicantGradPercentfc.dirty)">
+                <span *ngIf="applicantGradPercentfc.errors.required">This field is mandate</span>
+
+            </div>
+        </div>
+        <button class="btn btn-block btn-primary" [disabled]="applicantForm.invalid">
+            Save
+        </button>
+    </form>
+</div>

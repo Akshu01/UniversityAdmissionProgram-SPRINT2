@@ -1,0 +1,63 @@
+<body>
+  <header class="bg-dark text-white p-4 container-fluid">
+    <h2 class="text-center">University Course Admission Program</h2>
+  </header>
+
+  <section class="container-fluid p-4">
+
+    <h1 class="text-center">
+      <strong>LOGIN</strong>
+    </h1>
+
+    <div class="col-sm-8 mx-auto">
+      <form class="form" #f="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class=" col-sm-4 mx-auto">
+          <h5><strong><small class="text-dark"> {{ message }}</small></strong></h5>
+        </div>
+
+        <div class="form-group col-sm-4 mx-auto">
+          <h5><label><strong>Email : </strong></label></h5>
+          <input type="email" name="e" class="form-control" [(ngModel)]="login.email" placeholder="Enter your Email id"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required #e="ngModel" />
+        </div>
+        <div class="alert alert-danger col-sm-4 mx-auto" *ngIf="e.invalid && (e.touched || e.dirty)">
+          <span *ngIf="e.errors.required">Mandatory Field</span>
+          <span *ngIf="e.errors.pattern">Enter Valid Email Id</span>
+        </div>
+        <div class="form-group col-sm-4 mx-auto mt-3">
+          <h5><label><strong>Password : </strong></label></h5>
+          <input type="password" name="p" class="form-control" [(ngModel)]="login.password"
+            placeholder="Enter your password" required #p="ngModel" minlength="8" />
+        </div>
+        <div class="alert alert-danger col-sm-4 mx-auto" *ngIf="p.invalid && (p.touched || p.dirty)">
+          <span *ngIf="p.errors.required">Mandatory Field</span>
+          <span *ngIf="p.errors.minlength">Password must we atleast 8 characters long</span>
+        </div>
+
+        <div class="form-group col-sm-4 mx-auto">
+          <div>
+            <button class="btn btn-dark mt-3" type="submit" [disabled]="f.invalid">
+              Sign In
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-sm-2 mx-auto mt-5">
+      <a class="btn btn-info btn-dark" routerLink="/register">
+        <div>Don't have an account?</div>
+        <strong>Sign Up</strong>
+      </a>
+    </div>
+
+
+    <div class="col-sm-2 mx-auto mt-5">
+      <a class="btn btn-info btn-dark" routerLink="/register1">
+        Login as Administrative
+      </a>
+    </div>
+
+  </section>
+</body>

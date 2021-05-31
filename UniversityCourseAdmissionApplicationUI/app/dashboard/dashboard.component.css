@@ -1,0 +1,10 @@
+body {
+    background-image: url("src/assets/istockphoto-171347085-612x612.jpg");
+    background-repeat: no-repeat;
+    /* background-size: 1600px 1100px; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 95vh;
+}

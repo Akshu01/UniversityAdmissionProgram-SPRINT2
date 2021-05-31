@@ -1,0 +1,20 @@
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+}
+
+div {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+body {
+    background-image: url("src/assets/Documentation_needed_to_apply_for_a_course_in_Germany_image1_LAPE-06_Documentation_needed_to_apply_for_a_course_in_Germany_790x345px.jpg");
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 95vh;
+    
+}

@@ -1,0 +1,33 @@
+<h3>Applicant List</h3>
+<app-msgbox *ngIf="err && !applicant">
+    <strong>loading...pleasewait...</strong>
+</app-msgbox>
+<app-msgbox *ngIf="err" [isError]="true">
+    <strong>{{ err}}</strong>
+</app-msgbox>
+<table class="table table-bordered table-hover" *ngIf="applicant">
+    <thead>
+        <tr>
+            <th>Applicant ID</th>
+            <th>Applicant Name</th>
+            <th>Mobile Number</th>
+            <th>Applicant Degree</th>
+            <th>Applicant Intermediate Percent</th>
+            <th colspan="2">Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let a of applicant">
+            <td>{{ a.applicantId }} </td>
+            <td>{{ a.applicantName }} </td>
+            <td>{{ a.mobileNumber }} </td>
+            <td>{{ a.applicantDegree }} </td>
+            <td>{{ a.applicantGradPercent }} </td>
+
+            <td><button class="btn btn-sm btn-danger" (click)="delete(a.applicantId)">Delete Applicant</button></td>
+            <td><a class="btn btn-sm btn-info" routerLink="/header/applicants/edit/{{a.applicantId}}">Edit Applicant
+                    Details</a></td>
+        </tr>
+    </tbody>
+</table>

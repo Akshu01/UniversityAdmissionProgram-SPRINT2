@@ -1,0 +1,27 @@
+<body>
+    <h2><strong>Admissions List</strong></h2>
+    <table class="table table-bordered table-hover mt-4" *ngIf="admission">
+        <thead class="table-dark">
+            <tr>
+                <th>Admission ID</th>
+                <th>Admission Date </th>
+                <th>Admission Status</th>
+                <th>Applicant Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of admission">
+                <td>{{ e.admissionId }} </td>
+                <td>{{ e.admissionDate }} </td>
+                <td>{{ e.admissionStatus }}</td>
+                <td>{{ e.applicantId }}</td>
+
+            </tr>
+        </tbody>
+    </table>
+    <section>
+        <h3 style="font-weight: bold; color: blue;">IMPORTANT:</h3>
+        <p style="margin: auto; background-color: aquamarine; ">If you are unable to view your status,kindly wait.
+            Your profile is under verification.It will be updated within a week.</p>
+    </section>
+</body>

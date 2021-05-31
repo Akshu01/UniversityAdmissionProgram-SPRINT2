@@ -1,0 +1,31 @@
+<body>
+    <section class="bg-dark text-white p-4">
+        <h2>
+            <marquee>University Course Admission Program </marquee>
+        </h2>
+    </section>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm container-fluid">
+        <a routerLink="/header" class="navbar-brand p-3">UCAP</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a routerLink="/header/applicants" class="nav-link">Applicants</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/header/courses" class="nav-link">Courses</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/header/admissioncommitteemember" class="nav-link">Admission Committee Members</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/header/universitystaffs" class="nav-link">University Staff Members</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/header/admissions" class="nav-link">Admissions</a>
+            </li>
+            <li id="signOut" class="nav-item">
+                <a routerLink="/" class="nav-link">Sign Out</a>
+            </li>
+        </ul>
+    </nav>
+</body>
+<router-outlet></router-outlet>

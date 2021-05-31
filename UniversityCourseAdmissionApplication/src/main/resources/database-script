@@ -1,0 +1,110 @@
+set linesize 400
+
+CREATE TABLE courses
+( 
+course_id 		number(19) 		CONSTRAINT 	courses_courseId_pk 		PRIMARY KEY,
+course_name 	varchar2(30)  	CONSTRAINT 	courses_courseName_nn 		NOT NULL,
+course_duration varchar2(20) 	CONSTRAINT 	courses_courseDuration_nn 	NOT NULL,
+start_Date 		date  			CONSTRAINT 	courses_courseStartDate_nn 	NOT NULL,
+end_Date  		date  			CONSTRAINT 	courses_courseEndDate_nn 	NOT NULL,
+course_fees 	varchar2(10)	CONSTRAINT 	courses_courseFees_nn 		NOT NULL,
+staff_id 		number(19)		CONSTRAINT	courses_staffId_fk			REFERENCES ustaffmembers(staff_id) 
+);
+
+INSERT INTO courses VALUES
+(1,'B.Tech','4 Years', '01-july-2021', '10-jun-2025', '500000',1);
+INSERT INTO courses VALUES
+(2,'BBA','3 Years', '05-july-2021', '31-may-2024', '150000',1);
+INSERT INTO courses VALUES
+(3,'B.COM','3 Years', '10-july-2021', '10-jun-2024', '200000',3);
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE ustaffmembers
+(
+staff_id 	number(19)		CONSTRAINT	ustaffmembers_staffId_pk	PRIMARY KEY,
+password	varchar2(20)	CONSTRAINT	ustaffmembers_password_un	UNIQUE,
+role		varchar2(20)	CONSTRAINT	ustaffmembers_role_un		UNIQUE
+);
+
+INSERT INTO ustaffmembers VALUES
+(1,'CAPGUS001','HOD');
+INSERT INTO ustaffmembers VALUES
+(2,'CAPGUS002','Professor');
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE applicants(
+applicant_id 	 		number(19) 	 CONSTRAINT applicants_Applicant_Id_pk PRIMARY KEY,
+applicant_name 	 		varchar2(30) CONSTRAINT applicants_Applicant_Name_nn NOT NULL,
+mobile_number 	 		varchar2(10) CONSTRAINT applicants_Mobile_Number_un UNIQUE,
+applicant_degree 		varchar2(15) CONSTRAINT applicants_Applicant_Degree_nn NOT NULL,
+applicant_grad_percent 	number(4,2)  NOT NULL
+);
+INSERT INTO applicants Values(5856724,'Raj','9765325670','B.tech',70);
+INSERT INTO applicants Values(5856120,'Shruti','9765325870','B.tech',72);
+INSERT INTO applicants Values(5656004,'Kamal','9765328511','B.tech',77);
+INSERT INTO applicants Values(5546124,'Rachana','9870065437','B.tech',80);
+INSERT INTO applicants Values(5856224,'Abhay','9878065437','B.tech',60);
+INSERT INTO applicants Values(5856312,'Tanu','9870069976','B.tech',68);
+INSERT INTO applicants Values(5856111,'Anurag','9876037281','B.tech',77.4);
+INSERT INTO applicants Values(5236024,'Rashi','9718463729','B.tech', 81);
+INSERT INTO applicants Values(5116594,'Tarun','9453591027','B.tech', 80);
+INSERT INTO applicants Values(5856474,'Alka','9352759103','B.tech',78.4);
+INSERT INTO applicants Values(5856700,'Arjun','9701758295','B.tech',70);
+
+----------------------------------------------------
+CREATE TABLE admissions(
+admission_id 	number(19) 	 CONSTRAINT admissions_Admission_ID_pk PRIMARY KEY,
+course_id 		number(19) 	 CONSTRAINT admissions_Course_Id_fk References courses(course_id),
+applicant_id 	number(19) 	 CONSTRAINT admissions_Applicant_Id_fk REFERENCES applicants(applicant_Id),
+admission_date 	date 		 CONSTRAINT admissions_Admission_Date_nn NOT NULL,
+status 			varchar2(19) CONSTRAINT admissions_status_nn NOT NULL,
+admin_id 		number(19)   CONSTRAINT admissions_admin_id_fk references admissioncommiteemember(admin_id)
+);
+
+INSERT INTO admissions VALUES(111020,1,5856724,'01-may-2021','Applied',1);
+INSERT INTO admissions Values(111021,2,5856120,'07-may-2021','Applied',2);
+INSERT INTO admissions values(111022,3,5656004,'21-may-2021','Confirmed',1);
+INSERT INTO admissions values(111023,3,5546124,'21-may-2021','Confirmed',3);
+INSERT INTO admissions values(111024,2,5856224,'05-may-2021','Rejected',3);
+INSERT INTO admissions values(111025,1,5856312,'04-may-2021','Confirmed',2);
+INSERT INTO admissions values(111026,2,5856111,'09-may-2021','Applied',1);
+INSERT INTO admissions values(111027,3,5236024,'30-may-2021','Applied',2);
+INSERT INTO admissions values(111028,1,5116594,'17-may-2021','Confirmed',2);
+INSERT INTO admissions values(111029,2,5856474,'01-june-2021','Confirmed',1);
+INSERT INTO admissions values(111030,2,5856700,'25-may-2021','Rejected',3);
+
+-----------------------------------------------------------------------
+create table logins
+(
+login_id 		number(4)   	CONSTRAINT    logins_login_id_pk PRIMARY KEY,
+first_name		varchar2(20)   	CONSTRAINT    logins_fname_nn 	 NOT NULL,
+last_name		varchar2(20)   	CONSTRAINT    logins_lname_nn    NOT NULL,
+email			varchar2(40)	CONSTRAINT	  logins_email_un	 UNIQUE,
+password 		varchar2(20)   	CONSTRAINT    logins_password_nn NOT NULL,
+mobile_number	varchar2(10)	CONSTRAINT    logins_mobile_un	 UNIQUE,
+address			varchar2(60)    CONSTRAINT    logins_address_nn  NOT NULL,
+postal_code     varchar2(10)    CONSTRAINT    logins_code_nn     NOT NULL
+);
+
+INSERT INTO logins  values(1001,'Akshat','Kumar','akshat@gmail.com','puresoult@1','9582880633','House No. 12,Block- k,Gr. Noida','201308');
+INSERT INTO logins  values(1002,'Akshit','Kumar','aK12@gmail.com','puresoult@2','9582880600','House No. 22,Block- I,Noida','201310');
+INSERT INTO logins  values(1003,'Arpit','Jain','jain.a@gmail.com','puresoult@3','9582880733','House No. 1,Block- B,Gr. Noida','201308');
+INSERT INTO logins  values(1004,'Arpit','Tailong','arpit@gmail.com','puresoult@4','8582880633','House No. 122,Block- C,Gr. Noida','201308');
+INSERT INTO logins  values(1005,'Akhil','Arora','akhil@gmail.com','puresoult@5','9132880633','House No. 412,Block- D,Gr. Noida','201308');
+INSERT INTO logins  values(1006,'Shikhar','Pathak','shikhar@gmail.com','puresoult@6','8532880633','House No. 62,Block- E,Gr. Noida','201308');
+INSERT INTO logins  values(1007,'Akshat','Kumar','udit@gmail.com','puresoult@7','9582880000','House No. 45,Block- F,Gr. Noida','201308');
+
+-----------------------------------------------------------------
+CREATE TABLE admissioncommiteemember(
+admin_id 		number(19) 	 CONSTRAINT ac_admin_id_pk PRIMARY KEY,
+admin_name 		varchar2(30) CONSTRAINT ac_admin_name_nn NOT NULL,
+admin_contact 	varchar2(10) CONSTRAINT ac_admin_contact_un UNIQUE,
+);
+
+INSERT INTO admissioncommiteemember Values (1,'Mansi@12kmr','9823572523');
+INSERT INTO admissioncommiteemember Values (2,'Sumit93GLB123','9429474521');
+INSERT INTO admissioncommiteemember Values (3,'Rohan*123','9123678528');
+
+COMMIT;

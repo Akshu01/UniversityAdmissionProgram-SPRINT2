@@ -1,0 +1,58 @@
+<body>
+  <header class="bg-dark text-white p-4 container-fluid">
+    <h2 class="text-center">University Course Admission Program</h2>
+  </header>
+
+  <section class="container p-4">
+
+    <h1 class="text-center">
+      <strong>WELCOME TO ADMIN LOGIN</strong>
+    </h1>
+
+    <app-msg-box msgType="Info" *ngIf="infoMsg">
+      <strong>{{infoMsg}}</strong>
+    </app-msg-box>
+
+    <app-msg-box msgType="Error" *ngIf="errMsg">
+      <strong>{{errMsg}}</strong>
+    </app-msg-box>
+
+    <div class="col-sm-8 mx-auto">
+      <form class="form" #f="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class=" col-sm-4 mx-auto">
+          <small class="text-dark"><strong> {{ message }} </strong></small>
+        </div>
+
+        <div class="form-group col-sm-4 mx-auto mt-2">
+          <h5><strong><label>User Name : </label></strong></h5>
+          <input type="text" name="e" class="form-control" [(ngModel)]="admin.adminName"
+            placeholder="Enter your User Name" required #e="ngModel" />
+        </div>
+
+        <div class="alert alert-danger col-sm-4 mx-auto" *ngIf="e.invalid && (e.touched || e.dirty)">
+          <span *ngIf="e.errors.required">Mandatory Field</span>
+        </div>
+
+        <div class="form-group col-sm-4 mx-auto mt-3">
+          <h5><strong><label>Mobile Number : </label></strong></h5>
+          <input type="number" name="p" class="form-control" [(ngModel)]="admin.adminContact"
+            placeholder="Enter your Contact Number" required #p="ngModel" pattern="^((\\+91-?)|0)?[0-9]{10}$" />
+        </div>
+
+        <div class="alert alert-danger col-sm-4 mx-auto" *ngIf="p.invalid && (p.touched || p.dirty)">
+          <span *ngIf="p.errors.required">Mandatory Field</span>
+          <span *ngIf="p.errors.pattern">Please enter 10 digits mobile number</span>
+        </div>
+
+        <div class="form-group col-sm-4 mx-auto">
+          <div>
+            <button class="btn btn-dark mt-3" type="submit" [disabled]="f.invalid">
+              Sign In
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</body>

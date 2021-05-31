@@ -1,0 +1,20 @@
+<h3>University Staff Members List</h3>
+<table class="table table-bordered table-hover" *ngIf="staff">
+    <thead>
+        <tr>
+            <th>Staff ID</th>
+            <th>Passcode</th>
+            <th>Role</th>
+            <th class="text-center" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of staff">
+            <td>{{ e.staffId }} </td>
+            <td>{{ e.password }} </td>
+            <td>{{ e.role }} </td>
+            <td><button class="btn btn-sm btn-danger" (click)="delete(e.staffId)">Delete Staff</button></td>
+            <td><a class="btn btn-sm btn-info" routerLink="/header/universitystaffs/edit/{{e.staffId}}">Edit Staff Details</a></td>
+        </tr>
+    </tbody>
+</table>

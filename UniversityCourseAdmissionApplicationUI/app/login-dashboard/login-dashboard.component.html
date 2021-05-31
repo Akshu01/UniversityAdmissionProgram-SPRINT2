@@ -1,0 +1,90 @@
+<body>
+    <header class="bg-dark text-white p-4 container-fluid">
+        <h2 class="text-center">University Course Admission Program</h2>
+    </header>
+
+    <div class="col-sm-6 mx-auto">
+
+        <h1><strong>User Registration</strong></h1>
+
+        <form class="form" [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+            <div class="form-group">
+                <h5><strong><label class="form-control-label">Login Id :</label></strong></h5>
+                <input type="number" formControlName="loginId" class="form-control" [disabled]="true"
+                    placeholder="Enter login id" />
+                <div class="alert alert-danger" *ngIf="loginIdfc.invalid && (loginIdfc.touched || loginIdfc.dirty)">
+                    <span *ngIf="loginIdfc.errors.required">This field is mandatory</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <h5><strong><label class="form-control-label">First Name :</label></strong></h5>
+                <input type="text" formControlName="firstName" class="form-control"
+                    placeholder="Enter your first name" />
+                <div class="alert alert-danger"
+                    *ngIf="firstNamefc.invalid && (firstNamefc.touched || firstNamefc.dirty)">
+                    <span *ngIf="firstNamefc.errors.required">This field is mandatory</span>
+                    <span *ngIf="firstNamefc.errors.minlength">First Name should be minimum 4 letters long</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <h5><strong><label class="form-control-label">Last Name :</label></strong></h5>
+                <input type="text" formControlName="lastName" class="form-control" placeholder="Enter your last name" />
+                <div class="alert alert-danger" *ngIf="lastNamefc.invalid && (lastNamefc.touched || lastNamefc.dirty)">
+                    <span *ngIf="lastNamefc.errors.required">This field is mandatory</span>
+                    <span *ngIf="lastNamefc.errors.minlength">Last Name should be minimum 4 letters long</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <h5><strong><label class="form-control-label">E Mail :</label></strong></h5>
+                <input type="email" formControlName="email" class="form-control" placeholder="Enter your E Mail Id" />
+                <div class="alert alert-danger" *ngIf="emailfc.invalid && (emailfc.touched || emailfc.dirty)">
+                    <span *ngIf="emailfc.errors.required">This field is mandatory</span>
+                    <span *ngIf="emailfc.errors.email">Enter a valid email id</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <h5><strong><label class="form-control-label">Password :</label></strong></h5>
+                <input type="password" formControlName="password" class="form-control" placeholder="Enter your password"
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" />
+                <div class="alert alert-danger" *ngIf="passwordfc.invalid && (passwordfc.touched || passwordfc.dirty)">
+                    <span *ngIf="passwordfc.errors.required">This field is mandatory</span>
+                    <span *ngIf="passwordfc.errors.pattern">
+                        Password must contain minimum eight characters,at least one uppercase letter,one lowercase
+                        letter,a special character and one number
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <h5><strong><label class="form-control-label">Mobile Number :</label></strong></h5>
+                <input type="number" formControlName="mobileNumber" class="form-control"
+                    pattern="^((\\+91-?)|0)?[0-9]{10}$" placeholder="Enter your mobile number" />
+                <div class="alert alert-danger"
+                    *ngIf="mobileNumberfc.invalid && (mobileNumberfc.touched || mobileNumberfc.dirty)">
+                    <span *ngIf="mobileNumberfc.errors.required">This field is mandatory</span>
+                    <span *ngIf="mobileNumberfc.errors.pattern">Please enter 10 digits mobile number</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <h5><strong><label class="form-control-label">Address :</label></strong></h5>
+                <input type="text" formControlName="address" class="form-control" placeholder="Enter your address" />
+                <div class="alert alert-danger" *ngIf="addressfc.invalid && (addressfc.touched || addressfc.dirty)">
+                    <span *ngIf="addressfc.errors.required">This field is mandatory</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <h5><strong><label class="form-control-label">Postal Code :</label></strong></h5>
+                <input type="text" formControlName="postalCode" class="form-control"
+                    placeholder="Enter your postal code" />
+                <div class="alert alert-danger"
+                    *ngIf="postalCodefc.invalid && (postalCodefc.touched || postalCodefc.dirty)">
+                    <span *ngIf="postalCodefc.errors.required">This field is mandatory</span>
+                    <span *ngIf="postalCodefc.errors.minlength">Enter A Valid Postal Code</span>
+                    <span *ngIf="postalCodefc.errors.maxlength">Enter A Valid Postal Code</span>
+                </div>
+            </div>
+            <button class="btn btn-block btn-primary mt-2" [disabled]="loginForm.invalid">
+                Register
+            </button>
+        </form>
+    </div>
+</body>

@@ -1,0 +1,34 @@
+<div class="col-sm-6 mx-auto">
+
+    <h3><strong>{{ isEditing ? "Edit" : "New"}} Admission Committee Member</strong></h3>
+
+    <form class="form" [formGroup]="committeeForm" (ngSubmit)="handleSubmit()">
+        <div class="form-group mt-4">
+            <h5><strong><label class="form-control-label">Admin Id :</label></strong></h5>
+            <input type="number" formControlName="adminId" class="form-control " placeholder="Enter admin Id" />
+            <div class="alert alert-danger" *ngIf="adminIdfc.invalid && (adminIdfc.touched || adminIdfc.dirty)">
+                <span *ngIf="adminIdfc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+        <div class="form-group mt-2">
+            <h5><strong><label class="form-control-label">Admin Name :</label></strong></h5>
+            <input type="text" formControlName="adminName" class="form-control" placeholder="Enter the admin name" />
+            <div class="alert alert-danger" *ngIf="adminNamefc.invalid && (adminNamefc.touched || adminNamefc.dirty)">
+                <span *ngIf="adminNamefc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+        <div class="form-group mt-2">
+            <h5><strong><label class="form-control-label">Admin Contact :</label></strong></h5>
+            <input type="number" formControlName="adminContact" class="form-control" pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                placeholder="Enter admin mobile number" maxlength="10" />
+            <div class="alert alert-danger"
+                *ngIf="adminContactfc.invalid && (adminContactfc.touched || adminContactfc.dirty)">
+                <span *ngIf="adminContactfc.errors.required">This field is mandate</span>
+                <span *ngIf="adminContactfc.errors.pattern">Enter a 10 digit mobile number</span>
+            </div>
+        </div>
+        <button class="btn btn-block btn-primary mt-2" [disabled]="committeeForm.invalid">
+            Save
+        </button>
+    </form>
+</div>

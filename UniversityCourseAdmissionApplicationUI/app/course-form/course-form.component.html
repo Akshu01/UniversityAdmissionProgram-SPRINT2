@@ -1,0 +1,62 @@
+<div class = "col-sm-6 mx-auto">
+    
+    <h3>{{ isEditing ? "Edit" : "New"}} University Courses</h3>
+
+    <form class = "form" [formGroup] = "courseForm" (ngSubmit) = "handleSubmit()">
+        <div class = "form-group">
+            <label class = "form-control-label">Course Id :</label>
+            <input type = "number" formControlName = "courseId" class = "form-control" />
+            <div class="alert alert-danger" *ngIf="courseIdfc.invalid && (courseIdfc.touched || courseIdfc.dirty)">
+                <span *ngIf="courseIdfc.errors.required">This field is mandate</span>
+            </div> 
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Course Name :</label>
+            <input type="text" formControlName="courseName" class="form-control" />
+            <div class="alert alert-danger" *ngIf="courseNamefc.invalid && (courseNamefc.touched || courseNamefc.dirty)">
+                <span *ngIf="courseNamefc.errors.required">This field is mandate</span>
+                <span *ngIf="courseNamefc.errors.maxLength">Maximum 20 characters allowed</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Course Duration :</label>
+            <input type="text" formControlName="courseDuration" class="form-control" />
+            <div class="alert alert-danger" *ngIf="courseDurationfc.invalid && (courseDurationfc.touched || courseDurationfc.dirty)">
+                <span *ngIf="courseDurationfc.errors.required">This field is mandate</span>
+                <span *ngIf="courseDurationfc.errors.maxLength">Maximum 30 characters allowed</span>
+            </div>
+        </div>
+        <div class = "form-group">
+            <label class = "form-control-label">Course Start date :</label>
+            <input type = "date" formControlName = "courseStartDate" class = "form-control" />
+            <div class="alert alert-danger" *ngIf="courseStartDatefc.invalid && (courseStartDatefc.touched || courseStartDatefc.dirty)">
+                <span *ngIf="courseStartDatefc.errors.required">This field is mandate</span>
+            </div> 
+        </div>
+        <div class = "form-group">
+            <label class = "form-control-label">Course End date :</label>
+            <input type = "date" formControlName = "courseEndDate" class = "form-control" />
+            <div class="alert alert-danger" *ngIf="courseEndDatefc.invalid && (courseEndDatefc.touched || courseEndDatefc.dirty)">
+                <span *ngIf="courseEndDatefc.errors.required">This field is mandate</span>
+            </div> 
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Course Fees :</label>
+            <input type="number" formControlName="courseFees" class="form-control" />
+            <div class="alert alert-danger" *ngIf="courseFeesfc.invalid && (courseFeesfc.touched || courseFeesfc.dirty)">
+                <span *ngIf="courseFeesfc.errors.required">This field is mandate</span>
+                <span *ngIf="courseFeesfc.errors.maxLength">Maximum 30 characters allowed</span>
+            </div>
+        </div>
+        <div class = "form-group">
+            <label class = "form-control-label">Staff Id :</label>
+            <input type = "number" formControlName = "staff_id" class = "form-control" />
+            <div class="alert alert-danger" *ngIf="staff_idfc.invalid && (staff_idfc.touched || staff_idfc.dirty)">
+                <span *ngIf="staff_idfc.errors.required">This field is mandate</span>
+            </div>
+        </div>
+        <button class="btn btn-block btn-primary mt-2" [disabled]="courseForm.invalid">
+            Save
+        </button>
+    </form>
+</div>

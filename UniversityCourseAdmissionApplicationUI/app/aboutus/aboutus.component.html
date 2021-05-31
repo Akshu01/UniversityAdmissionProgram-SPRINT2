@@ -1,0 +1,81 @@
+<ngb-carousel *ngIf="images">
+  <ng-template ngbSlide>
+    <div id="img1" class="picsum-img-wrapper">
+      <img [src]="images[0]">
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div id="img2" class="picsum-img-wrapper">
+      <img [src]="images[1]">
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div id="img3" class="picsum-img-wrapper">
+      <img [src]="images[2]">
+    </div>
+  </ng-template>
+</ngb-carousel>
+<div class="col sm-7 mx-auto">
+  <h3 style="background-color:black;color:white; font-weight: bold;" class="p-3 mt-4">Our Motto:</h3>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title" style="font-weight: bolder;"><strong>WISDOM</strong></h5>
+            <p class="card-text">
+              <q>
+                The best index to a person's character is how he treats people who can't do him any good,
+                and how he treats people who can't fight back.
+              </q>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <div class="card">
+          <img class="card-img-top">
+
+          <div class="card-body">
+            <h5 class="card-title" style="font-weight: bolder;"><strong>KNOWLEDGE</strong></h5>
+            <p class="card-text">
+              <q>
+                Love of learning is the most necessary passion ... in it lies our happiness.
+                It's a sure remedy for what ails us, an unending source of pleasure.
+              </q>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark text-light  navbar-expand-sm container-fluid"><strong>Our Vision</strong></nav>
+  <p>
+    Our institute provides students with a supportive and nurturing education environment.
+    We rank the enhancement of students’ education outcomes and welfare as the highest priority of the Institute.
+    We have a multicultural learning environment have students from diversified cultures.
+    New students will quickly become part of our institute family where they learn in safe, friendly, multicultural
+    classrooms. Students are encouraged and supported to participate in classes to develop the personal skills and
+    confidence necessary to gain a career.
+    Our institute is the right choice to further your education.
+  </p>
+  <nav class="navbar navbar-dark bg-dark text-light navbar-expand-sm container-fluid"><strong>Courses currently we are
+      enrolling in</strong></nav>
+  <ul>
+    <li>Bachelors of Technology(B.tech)</li>
+    <li>Bachelor of Business Administration(BBA)</li>
+    <li>Bachelor of Commerce(B.Com)</li>
+  </ul>
+  <nav class="navbar navbar-dark bg-dark text-light navbar-expand-sm container-fluid"><strong>Facilities</strong></nav>
+  <p> The campuses are designed to meet the needs of our students. The environments are comfortable,
+    conducive to study, and provide highly functional facilities for the busy student. Our
+    facilities are fully equipped with audio visual projection to enhance the learning experience.
+    Study areas for groups and individuals in addition to the classrooms are available to students
+    for group projects, preparation of assignments, research purposes and many more.
+    Our Campuses provide lift access, a high level of security through CCTV surveillance,
+    and a Front Desk to assist with student enquiries. The Student Support and Academic Office is
+    open from 10 am – 5 pm Monday – Friday, appointments can be scheduled with our friendly Reception
+    Staff if required. Furthermore, Student Counselling is available to all students, appointments
+    can be made upon request.</p>
+
+</div>
